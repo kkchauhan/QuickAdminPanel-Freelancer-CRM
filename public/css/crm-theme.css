@@ -236,9 +236,12 @@ a:hover {
 }
 
 .sidebar {
+    height: calc(100vh - 60px);
     overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     z-index: 1;
+    padding-bottom: 2rem;
 }
 
 /* Brand Link */
