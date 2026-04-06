@@ -137,41 +137,7 @@
 @endsection
 
 @section('styles')
-<style>
-    .small-box {
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        transition: transform 0.2s ease;
-    }
-    .small-box:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    }
-    .small-box .inner {
-        padding: 15px;
-    }
-    .small-box .inner h4 {
-        font-size: 1.6rem;
-        font-weight: 700;
-        margin-bottom: 0;
-    }
-    .small-box .inner p {
-        font-size: 0.9rem;
-        margin-bottom: 0;
-        opacity: 0.85;
-    }
-    .small-box .icon {
-        position: absolute;
-        top: 12px;
-        right: 15px;
-        font-size: 2.5rem;
-        opacity: 0.2;
-    }
-    .small-box.bg-success { background: linear-gradient(135deg, #28a745, #20c997) !important; color: #fff; }
-    .small-box.bg-danger  { background: linear-gradient(135deg, #dc3545, #e74a6f) !important; color: #fff; }
-    .small-box.bg-warning { background: linear-gradient(135deg, #ffc107, #f0ad4e) !important; color: #fff; }
-    .small-box.bg-info    { background: linear-gradient(135deg, #17a2b8, #3dc7e0) !important; color: #fff; }
-</style>
+{{-- Styles handled by crm-theme.css --}}
 @endsection
 
 @section('scripts')
@@ -196,38 +162,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 {
                     label: '{{ trans("cruds.clientReport.reports.income") }}',
                     data: income,
-                    backgroundColor: 'rgba(40, 167, 69, 0.8)',
-                    borderColor: 'rgba(40, 167, 69, 1)',
+                    backgroundColor: 'rgba(6, 214, 160, 0.7)',
+                    borderColor: 'rgba(6, 214, 160, 1)',
                     borderWidth: 1,
-                    borderRadius: 4,
+                    borderRadius: 6,
                 },
                 {
                     label: '{{ trans("cruds.clientReport.reports.expenses") }}',
                     data: expenses,
-                    backgroundColor: 'rgba(220, 53, 69, 0.8)',
-                    borderColor: 'rgba(220, 53, 69, 1)',
+                    backgroundColor: 'rgba(239, 71, 111, 0.7)',
+                    borderColor: 'rgba(239, 71, 111, 1)',
                     borderWidth: 1,
-                    borderRadius: 4,
+                    borderRadius: 6,
                 },
                 {
                     label: '{{ trans("cruds.clientReport.reports.fees") }}',
                     data: fees,
-                    backgroundColor: 'rgba(255, 193, 7, 0.8)',
-                    borderColor: 'rgba(255, 193, 7, 1)',
+                    backgroundColor: 'rgba(255, 209, 102, 0.7)',
+                    borderColor: 'rgba(255, 209, 102, 1)',
                     borderWidth: 1,
-                    borderRadius: 4,
+                    borderRadius: 6,
                 },
                 {
                     label: '{{ trans("cruds.clientReport.reports.total") }}',
                     data: total,
                     type: 'line',
-                    borderColor: 'rgba(23, 162, 184, 1)',
-                    backgroundColor: 'rgba(23, 162, 184, 0.1)',
+                    borderColor: 'rgba(17, 138, 178, 1)',
+                    backgroundColor: 'rgba(17, 138, 178, 0.08)',
                     borderWidth: 3,
                     pointRadius: 5,
-                    pointBackgroundColor: 'rgba(23, 162, 184, 1)',
+                    pointBackgroundColor: 'rgba(17, 138, 178, 1)',
                     fill: true,
-                    tension: 0.3,
+                    tension: 0.4,
                 }
             ]
         },
@@ -260,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             return value.toLocaleString();
                         }
                     },
-                    grid: { color: 'rgba(0,0,0,0.05)' }
+                    grid: { color: 'rgba(255,255,255,0.04)' }
                 },
                 x: {
                     grid: { display: false }
@@ -290,14 +256,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     Math.round(totalFees * 100) / 100
                 ],
                 backgroundColor: [
-                    'rgba(40, 167, 69, 0.85)',
-                    'rgba(220, 53, 69, 0.85)',
-                    'rgba(255, 193, 7, 0.85)',
+                    'rgba(6, 214, 160, 0.8)',
+                    'rgba(239, 71, 111, 0.8)',
+                    'rgba(255, 209, 102, 0.8)',
                 ],
                 borderColor: [
-                    'rgba(40, 167, 69, 1)',
-                    'rgba(220, 53, 69, 1)',
-                    'rgba(255, 193, 7, 1)',
+                    'rgba(6, 214, 160, 1)',
+                    'rgba(239, 71, 111, 1)',
+                    'rgba(255, 209, 102, 1)',
                 ],
                 borderWidth: 2,
                 hoverOffset: 8,

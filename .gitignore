@@ -5,6 +5,7 @@
 /vendor
 /.idea
 /.agents
+/.claude
 .env
 .env.backup
 .phpunit.result.cache
