@@ -31,7 +31,7 @@
                             {{ trans('cruds.note.fields.note_text') }}
                         </th>
                         <td>
-                            {!! $note->note_text !!}
+                            {{ $note->note_text }}
                         </td>
                     </tr>
                 </tbody>

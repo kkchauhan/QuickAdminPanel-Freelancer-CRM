@@ -31,7 +31,7 @@ class TransactionTypeController extends Controller
 
     public function store(StoreTransactionTypeRequest $request)
     {
-        $transactionType = TransactionType::create($request->all());
+        $transactionType = TransactionType::create($request->validated());
 
         return redirect()->route('admin.transaction-types.index');
     }
@@ -45,7 +45,7 @@ class TransactionTypeController extends Controller
 
     public function update(UpdateTransactionTypeRequest $request, TransactionType $transactionType)
     {
-        $transactionType->update($request->all());
+        $transactionType->update($request->validated());
 
         return redirect()->route('admin.transaction-types.index');
     }

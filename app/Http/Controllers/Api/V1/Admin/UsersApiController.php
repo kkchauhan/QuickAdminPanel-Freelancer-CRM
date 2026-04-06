@@ -22,7 +22,7 @@ class UsersApiController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        $user = User::create($request->all());
+        $user = User::create($request->validated());
         $user->roles()->sync($request->input('roles', []));
 
         return (new UserResource($user))
@@ -39,7 +39,7 @@ class UsersApiController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
+        $user->update($request->validated());
         $user->roles()->sync($request->input('roles', []));
 
         return (new UserResource($user))

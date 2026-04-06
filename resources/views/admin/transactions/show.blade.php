@@ -79,7 +79,7 @@
                             {{ trans('cruds.transaction.fields.description') }}
                         </th>
                         <td>
-                            {!! $transaction->description !!}
+                            {{ $transaction->description }}
                         </td>
                     </tr>
                 </tbody>

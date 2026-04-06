@@ -22,7 +22,7 @@ class RolesApiController extends Controller
 
     public function store(StoreRoleRequest $request)
     {
-        $role = Role::create($request->all());
+        $role = Role::create($request->validated());
         $role->permissions()->sync($request->input('permissions', []));
 
         return (new RoleResource($role))
@@ -39,7 +39,7 @@ class RolesApiController extends Controller
 
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        $role->update($request->all());
+        $role->update($request->validated());
         $role->permissions()->sync($request->input('permissions', []));
 
         return (new RoleResource($role))

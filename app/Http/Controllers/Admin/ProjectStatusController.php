@@ -31,7 +31,7 @@ class ProjectStatusController extends Controller
 
     public function store(StoreProjectStatusRequest $request)
     {
-        $projectStatus = ProjectStatus::create($request->all());
+        $projectStatus = ProjectStatus::create($request->validated());
 
         return redirect()->route('admin.project-statuses.index');
     }
@@ -45,7 +45,7 @@ class ProjectStatusController extends Controller
 
     public function update(UpdateProjectStatusRequest $request, ProjectStatus $projectStatus)
     {
-        $projectStatus->update($request->all());
+        $projectStatus->update($request->validated());
 
         return redirect()->route('admin.project-statuses.index');
     }

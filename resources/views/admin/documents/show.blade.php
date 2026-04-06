@@ -47,7 +47,7 @@
                             {{ trans('cruds.document.fields.description') }}
                         </th>
                         <td>
-                            {!! $document->description !!}
+                            {{ $document->description }}
                         </td>
                     </tr>
                 </tbody>

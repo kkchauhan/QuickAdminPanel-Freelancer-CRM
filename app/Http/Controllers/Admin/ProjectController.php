@@ -37,7 +37,7 @@ class ProjectController extends Controller
 
     public function store(StoreProjectRequest $request)
     {
-        $project = Project::create($request->all());
+        $project = Project::create($request->validated());
 
         return redirect()->route('admin.projects.index');
     }
@@ -57,7 +57,7 @@ class ProjectController extends Controller
 
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $project->update($request->all());
+        $project->update($request->validated());
 
         return redirect()->route('admin.projects.index');
     }

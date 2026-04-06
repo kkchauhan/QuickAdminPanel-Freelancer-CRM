@@ -22,7 +22,7 @@ class CurrencyApiController extends Controller
 
     public function store(StoreCurrencyRequest $request)
     {
-        $currency = Currency::create($request->all());
+        $currency = Currency::create($request->validated());
 
         return (new CurrencyResource($currency))
             ->response()
@@ -38,7 +38,7 @@ class CurrencyApiController extends Controller
 
     public function update(UpdateCurrencyRequest $request, Currency $currency)
     {
-        $currency->update($request->all());
+        $currency->update($request->validated());
 
         return (new CurrencyResource($currency))
             ->response()

@@ -11,6 +11,7 @@ use App\Http\Resources\Admin\DocumentResource;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\JsonResponse;
 
 class DocumentApiController extends Controller
 {
@@ -25,10 +26,13 @@ class DocumentApiController extends Controller
 
     public function store(StoreDocumentRequest $request)
     {
-        $document = Document::create($request->all());
+        $document = Document::create($request->validated());
 
         if ($request->input('document_file', false)) {
-            $document->addMedia(storage_path('tmp/uploads/' . $request->input('document_file')))->toMediaCollection('document_file');
+            $filename = $this->sanitizeMediaFilename($request->input('document_file'));
+            $filepath = storage_path('tmp/uploads/' . $filename);
+            abort_if(!$filename || !file_exists($filepath), Response::HTTP_UNPROCESSABLE_ENTITY, 'Invalid file reference.');
+            $document->addMedia($filepath)->toMediaCollection('document_file');
         }
 
         return (new DocumentResource($document))
@@ -45,11 +49,14 @@ class DocumentApiController extends Controller
 
     public function update(UpdateDocumentRequest $request, Document $document)
     {
-        $document->update($request->all());
+        $document->update($request->validated());
 
         if ($request->input('document_file', false)) {
             if (!$document->document_file || $request->input('document_file') !== $document->document_file->file_name) {
-                $document->addMedia(storage_path('tmp/uploads/' . $request->input('document_file')))->toMediaCollection('document_file');
+                $filename = $this->sanitizeMediaFilename($request->input('document_file'));
+                $filepath = storage_path('tmp/uploads/' . $filename);
+                abort_if(!$filename || !file_exists($filepath), Response::HTTP_UNPROCESSABLE_ENTITY, 'Invalid file reference.');
+                $document->addMedia($filepath)->toMediaCollection('document_file');
             }
         } elseif ($document->document_file) {
             $document->document_file->delete();

@@ -13,7 +13,9 @@ class AuthGates
         $user = \Auth::user();
 
         if (!app()->runningInConsole() && $user) {
-            $roles            = Role::with('permissions')->get();
+            $roles = \Illuminate\Support\Facades\Cache::remember('roles_with_permissions', 43200, function () {
+                return Role::with('permissions')->get();
+            });
             $permissionsArray = [];
 
             foreach ($roles as $role) {

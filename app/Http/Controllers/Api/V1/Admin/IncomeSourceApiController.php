@@ -22,7 +22,7 @@ class IncomeSourceApiController extends Controller
 
     public function store(StoreIncomeSourceRequest $request)
     {
-        $incomeSource = IncomeSource::create($request->all());
+        $incomeSource = IncomeSource::create($request->validated());
 
         return (new IncomeSourceResource($incomeSource))
             ->response()
@@ -38,7 +38,7 @@ class IncomeSourceApiController extends Controller
 
     public function update(UpdateIncomeSourceRequest $request, IncomeSource $incomeSource)
     {
-        $incomeSource->update($request->all());
+        $incomeSource->update($request->validated());
 
         return (new IncomeSourceResource($incomeSource))
             ->response()

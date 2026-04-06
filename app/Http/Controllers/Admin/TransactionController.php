@@ -43,7 +43,7 @@ class TransactionController extends Controller
 
     public function store(StoreTransactionRequest $request)
     {
-        $transaction = Transaction::create($request->all());
+        $transaction = Transaction::create($request->validated());
 
         return redirect()->route('admin.transactions.index');
     }
@@ -67,7 +67,7 @@ class TransactionController extends Controller
 
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
-        $transaction->update($request->all());
+        $transaction->update($request->validated());
 
         return redirect()->route('admin.transactions.index');
     }

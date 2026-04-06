@@ -34,7 +34,7 @@ class NoteController extends Controller
 
     public function store(StoreNoteRequest $request)
     {
-        $note = Note::create($request->all());
+        $note = Note::create($request->validated());
 
         return redirect()->route('admin.notes.index');
     }
@@ -52,7 +52,7 @@ class NoteController extends Controller
 
     public function update(UpdateNoteRequest $request, Note $note)
     {
-        $note->update($request->all());
+        $note->update($request->validated());
 
         return redirect()->route('admin.notes.index');
     }

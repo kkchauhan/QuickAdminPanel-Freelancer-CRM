@@ -22,25 +22,39 @@ class StoreTransactionRequest extends FormRequest
             'project_id'          => [
                 'required',
                 'integer',
+                'exists:projects,id',
             ],
             'transaction_type_id' => [
                 'required',
                 'integer',
+                'exists:transaction_types,id',
             ],
             'income_source_id'    => [
                 'required',
                 'integer',
+                'exists:income_sources,id',
             ],
             'amount'              => [
                 'required',
+                'numeric',
             ],
             'currency_id'         => [
                 'required',
                 'integer',
+                'exists:currencies,id',
             ],
             'transaction_date'    => [
                 'required',
                 'date_format:' . config('panel.date_format'),
+            ],
+            'name'                => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'description'         => [
+                'nullable',
+                'string',
             ],
         ];
     }

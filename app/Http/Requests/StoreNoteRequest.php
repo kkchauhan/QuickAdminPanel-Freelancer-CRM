@@ -22,9 +22,12 @@ class StoreNoteRequest extends FormRequest
             'project_id' => [
                 'required',
                 'integer',
+                'exists:projects,id',
             ],
             'note_text'  => [
                 'required',
+                'string',
+                'max:65535',
             ],
         ];
     }

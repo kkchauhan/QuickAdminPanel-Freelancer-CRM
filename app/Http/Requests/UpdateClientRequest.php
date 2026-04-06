@@ -21,6 +21,48 @@ class UpdateClientRequest extends FormRequest
         return [
             'first_name' => [
                 'required',
+                'string',
+                'max:255',
+            ],
+            'last_name' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'company' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'email' => [
+                'nullable',
+                'email',
+                'max:255',
+            ],
+            'phone' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'website' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'skype' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'country' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'status_id' => [
+                'nullable',
+                'integer',
+                'exists:client_statuses,id',
             ],
         ];
     }

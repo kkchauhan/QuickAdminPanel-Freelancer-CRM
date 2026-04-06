@@ -22,7 +22,7 @@ class NoteApiController extends Controller
 
     public function store(StoreNoteRequest $request)
     {
-        $note = Note::create($request->all());
+        $note = Note::create($request->validated());
 
         return (new NoteResource($note))
             ->response()
@@ -38,7 +38,7 @@ class NoteApiController extends Controller
 
     public function update(UpdateNoteRequest $request, Note $note)
     {
-        $note->update($request->all());
+        $note->update($request->validated());
 
         return (new NoteResource($note))
             ->response()

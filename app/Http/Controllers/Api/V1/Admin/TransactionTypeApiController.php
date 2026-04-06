@@ -22,7 +22,7 @@ class TransactionTypeApiController extends Controller
 
     public function store(StoreTransactionTypeRequest $request)
     {
-        $transactionType = TransactionType::create($request->all());
+        $transactionType = TransactionType::create($request->validated());
 
         return (new TransactionTypeResource($transactionType))
             ->response()
@@ -38,7 +38,7 @@ class TransactionTypeApiController extends Controller
 
     public function update(UpdateTransactionTypeRequest $request, TransactionType $transactionType)
     {
-        $transactionType->update($request->all());
+        $transactionType->update($request->validated());
 
         return (new TransactionTypeResource($transactionType))
             ->response()

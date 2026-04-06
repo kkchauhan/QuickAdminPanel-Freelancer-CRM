@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Project;
 use App\Transaction;
 use Carbon\Carbon;
+use Gate;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ClientReportController extends Controller
 {
     public function index(Request $request)
     {
+        abort_if(Gate::denies('client_report_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $q = Transaction::with('project')
             ->with('transaction_type')
             ->with('income_source')

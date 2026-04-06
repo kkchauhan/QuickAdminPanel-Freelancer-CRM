@@ -21,14 +21,30 @@ class StoreProjectRequest extends FormRequest
         return [
             'name'       => [
                 'required',
+                'string',
+                'max:255',
             ],
             'client_id'  => [
                 'required',
                 'integer',
+                'exists:clients,id',
             ],
             'start_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
+            ],
+            'budget'     => [
+                'nullable',
+                'numeric',
+            ],
+            'status_id'  => [
+                'nullable',
+                'integer',
+                'exists:project_statuses,id',
+            ],
+            'description'=> [
+                'nullable',
+                'string',
             ],
         ];
     }

@@ -22,6 +22,16 @@ class UpdateDocumentRequest extends FormRequest
             'project_id' => [
                 'required',
                 'integer',
+                'exists:projects,id',
+            ],
+            'name'       => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'description'=> [
+                'nullable',
+                'string',
             ],
         ];
     }

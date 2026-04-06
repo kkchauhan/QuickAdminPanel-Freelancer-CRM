@@ -31,7 +31,7 @@ class ClientStatusController extends Controller
 
     public function store(StoreClientStatusRequest $request)
     {
-        $clientStatus = ClientStatus::create($request->all());
+        $clientStatus = ClientStatus::create($request->validated());
 
         return redirect()->route('admin.client-statuses.index');
     }
@@ -45,7 +45,7 @@ class ClientStatusController extends Controller
 
     public function update(UpdateClientStatusRequest $request, ClientStatus $clientStatus)
     {
-        $clientStatus->update($request->all());
+        $clientStatus->update($request->validated());
 
         return redirect()->route('admin.client-statuses.index');
     }

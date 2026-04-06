@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\User;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 use Symfony\Component\HttpFoundation\Response;
 
 class StoreUserRequest extends FormRequest
@@ -21,12 +22,21 @@ class StoreUserRequest extends FormRequest
         return [
             'name'     => [
                 'required',
+                'string',
+                'max:255',
             ],
             'email'    => [
                 'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users',
             ],
             'password' => [
                 'required',
+                'string',
+                Password::min(8)->letters()->mixedCase()->numbers(),
+                'confirmed',
             ],
             'roles.*'  => [
                 'integer',

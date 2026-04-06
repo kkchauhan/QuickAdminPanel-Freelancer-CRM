@@ -22,9 +22,19 @@ class StoreDocumentRequest extends FormRequest
             'project_id'    => [
                 'required',
                 'integer',
+                'exists:projects,id',
             ],
             'document_file' => [
                 'required',
+            ],
+            'name'          => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'description'   => [
+                'nullable',
+                'string',
             ],
         ];
     }

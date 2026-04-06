@@ -22,7 +22,7 @@ class ClientStatusApiController extends Controller
 
     public function store(StoreClientStatusRequest $request)
     {
-        $clientStatus = ClientStatus::create($request->all());
+        $clientStatus = ClientStatus::create($request->validated());
 
         return (new ClientStatusResource($clientStatus))
             ->response()
@@ -38,7 +38,7 @@ class ClientStatusApiController extends Controller
 
     public function update(UpdateClientStatusRequest $request, ClientStatus $clientStatus)
     {
-        $clientStatus->update($request->all());
+        $clientStatus->update($request->validated());
 
         return (new ClientStatusResource($clientStatus))
             ->response()

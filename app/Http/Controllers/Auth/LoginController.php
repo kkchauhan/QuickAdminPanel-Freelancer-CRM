@@ -28,6 +28,26 @@ class LoginController extends Controller
     protected $redirectTo = '/admin/client-reports';
 
     /**
+     * Get the maximum number of attempts to allow.
+     *
+     * @return int
+     */
+    public function maxAttempts()
+    {
+        return 5;
+    }
+
+    /**
+     * Get the number of minutes to throttle for.
+     *
+     * @return int
+     */
+    public function decayMinutes()
+    {
+        return 5;
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

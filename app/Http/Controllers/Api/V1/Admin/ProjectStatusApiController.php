@@ -22,7 +22,7 @@ class ProjectStatusApiController extends Controller
 
     public function store(StoreProjectStatusRequest $request)
     {
-        $projectStatus = ProjectStatus::create($request->all());
+        $projectStatus = ProjectStatus::create($request->validated());
 
         return (new ProjectStatusResource($projectStatus))
             ->response()
@@ -38,7 +38,7 @@ class ProjectStatusApiController extends Controller
 
     public function update(UpdateProjectStatusRequest $request, ProjectStatus $projectStatus)
     {
-        $projectStatus->update($request->all());
+        $projectStatus->update($request->validated());
 
         return (new ProjectStatusResource($projectStatus))
             ->response()
