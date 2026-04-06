@@ -1,12 +1,13 @@
-# Laravel 8 project for managing freelance projects, notes and income
+# Laravel 12 project for managing freelance projects, notes and income
 
 It is a demo project for demonstrating what can be generated with [QuickAdminPanel](https://quickadminpanel.com) tool.
 
 Features:
+- Fully upgraded to **Laravel 12**
+- Beautiful, fully responsive **Midnight Glass** dark theme UI
+- Interactive financial charts using **Chart.js** for transaction reporting
 - CRUDs for Clients, Projects, Notes, Documents and Transactions
-- Simple Report for Income per Month
 - CRUDs for Settings - Currencies, Transaction Types, Client/Project Statuses
-- Based on [AdminLTE 3 Free Theme](https://adminlte.io/themes/dev/AdminLTE/index.html) (Bootstrap 4)
 
 ![Freelancer CRM screenshot report](https://laraveldaily.com/wp-content/uploads/2019/09/freelancer-crm-report.png)
 
