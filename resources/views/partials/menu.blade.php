@@ -16,6 +16,13 @@
 
                 <li class="nav-header">MAIN</li>
 
+                <li class="nav-item">
+                    <a href="{{ route("admin.home") }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
+                        <i class="fa-fw fas fa-home"></i>
+                        <p><span>Home</span></p>
+                    </a>
+                </li>
+
                 @can('client_report_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.client-reports.index") }}" class="nav-link {{ request()->is('admin/client-reports') || request()->is('admin/client-reports/*') ? 'active' : '' }}">
