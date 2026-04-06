@@ -92,9 +92,16 @@
                     </tr>
                 </tbody>
             </table>
-            <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">
-                {{ trans('global.back_to_list') }}
-            </a>
+            <div style="margin-top:20px; display:flex; gap:0.5rem;">
+                <a class="btn btn-default" href="{{ url()->previous() }}">
+                    <i class="fas fa-arrow-left mr-1"></i>{{ trans('global.back_to_list') }}
+                </a>
+                @can('client_edit')
+                    <a class="btn btn-primary" href="{{ route('admin.clients.edit', $client->id) }}">
+                        <i class="fas fa-pen-to-square mr-1"></i>{{ trans('global.edit') }}
+                    </a>
+                @endcan
+            </div>
         </div>
 
         <nav class="mb-3">
