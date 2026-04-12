@@ -137,9 +137,11 @@
                     <table>
                         <tr>
                             <td>
-                                Freelancer CRM Inc.<br>
-                                1234 Web Dev Street<br>
-                                Tech City, TC 12345
+                                {{ isset($setting) && $setting->company_name ? $setting->company_name : 'Freelancer CRM Inc.' }}<br>
+                                {{ isset($setting) && $setting->company_address_line1 ? $setting->company_address_line1 : '1234 Web Dev Street' }}<br>
+                                {{ isset($setting) && $setting->company_address_line2 ? $setting->company_address_line2 : 'Tech City, TC 12345' }}<br>
+                                @if(isset($setting) && $setting->company_email) {{ $setting->company_email }}<br> @endif
+                                @if(isset($setting) && $setting->company_phone) {{ $setting->company_phone }} @endif
                             </td>
 
                             <td>

@@ -86,6 +86,14 @@
                 <li class="nav-header">SETTINGS</li>
 
                 @can('client_management_setting_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.settings.edit") }}" class="nav-link {{ request()->is('admin/settings') || request()->is('admin/settings/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-building"></i>
+                            <p><span>Company Details</span></p>
+                        </a>
+                    </li>
+                @endcan
+                @can('client_management_setting_access')
                     <li class="nav-item has-treeview {{ request()->is('admin/currencies*') ? 'menu-open' : '' }} {{ request()->is('admin/transaction-types*') ? 'menu-open' : '' }} {{ request()->is('admin/income-sources*') ? 'menu-open' : '' }} {{ request()->is('admin/client-statuses*') ? 'menu-open' : '' }} {{ request()->is('admin/project-statuses*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw fas fa-sliders"></i>

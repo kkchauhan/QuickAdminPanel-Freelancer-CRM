@@ -67,4 +67,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('invoices/destroy', 'InvoiceController@massDestroy')->name('invoices.massDestroy');
     Route::get('invoices/{invoice}/download-pdf', 'InvoiceController@downloadPDF')->name('invoices.downloadPDF');
     Route::resource('invoices', 'InvoiceController');
+
+    // Settings
+    Route::get('settings', 'SettingsController@edit')->name('settings.edit');
+    Route::put('settings', 'SettingsController@update')->name('settings.update');
 });

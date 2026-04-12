@@ -88,8 +88,9 @@ class InvoiceController extends Controller
         abort_if(Gate::denies('invoice_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $invoice->load('project.client');
+        $setting = \App\Setting::first();
 
-        $pdf = Pdf::loadView('admin.invoices.pdf', compact('invoice'));
+        $pdf = Pdf::loadView('admin.invoices.pdf', compact('invoice', 'setting'));
         
         return $pdf->download('invoice-' . $invoice->id . '.pdf');
     }
